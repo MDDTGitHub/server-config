@@ -1,9 +1,9 @@
-FROM: 生成镜像的jdk环境
+FROM java:8
 
-  ADD 将target下的jar包加入镜像
+  ADD target/*.jar app.jar
 
-　VOLUME
+　VOLUME /tmp
 
-　EXPOSE 80 docker暴露给外界的端口80
+　EXPOSE 80
  
-  ENTRYPOINT 启动app.jar
+  ENTRYPOINT ["java","-jar","app.jar"]
