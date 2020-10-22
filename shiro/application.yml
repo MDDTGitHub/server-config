@@ -1,1 +1,51 @@
-111
+
+#-------------------------------------logging------------------------------
+
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml
+  file:
+    path: ./logs
+
+#-------------------------------------port------------------------------
+
+server:
+  port: 6066
+
+#-------------------------------------thymeleaf------------------------------
+
+spring:
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+  #-----------------------------------数据库配置-------------------------------------------------
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.195.1:3306/test?useSSL=false&allowMultiQueries=true&useAffectedRows=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+
+  main:
+    allow-bean-definition-overriding: true
+  #------------------------------------------------shiro-----------------------------------------------
+shiro:
+  enabled: true
+  web:
+    enabled: true
+  loginUrl: /
+  unauthorizedUrl: /index
+  sessionManager:
+    sessionIdCookieEnabled: true
+    sessionIdUrlRewritingEnabled: true
+
+#--------------------------mybatis xml配置文件-------------------------------------------------
+mybatis:
+  mapper-locations: classpath*:mapping/*.xml
+  type-aliases-package: com.shiro.study.pojo
